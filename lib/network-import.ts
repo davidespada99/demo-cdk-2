@@ -47,9 +47,5 @@ export class NetworkImportStack extends Stack {
 				})
 			);
 		});
-
-		buildConfig.stacks.network.publicSubnets.forEach((subnet) => {
-			this.publicSubnets.push(PublicSubnet.fromSubnetId(this, `${prefix}-public-${subnet.zone}`, subnet.id));
-		});
 	}
 }
