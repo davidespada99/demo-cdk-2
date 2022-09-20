@@ -172,7 +172,7 @@ export class NetworkStack extends Stack {
 			privateRoutes.push(
 				new CfnRoute(this, routeName, {
 					routeTableId: this.privateSubnets[index].routeTable.routeTableId,
-					natGatewayId: natGateways[buildConfig.environment == "prod" ? index : 0].ref,
+					natGatewayId: natGateways[buildConfig.environment == "prod" && index == 1 ? 1 : 0].ref,
 					destinationCidrBlock: "0.0.0.0/0",
 				})
 			);
