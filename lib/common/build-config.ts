@@ -26,7 +26,7 @@ export interface SubnetConfig {
 export function getConfig(app: App): BuildConfig {
 	let env: string = app.node.tryGetContext("config");
 
-	if (env && env != "network" && env != "dev" && env != "prod") {
+	if (env && env != "dev" && env != "prod") {
 		throw new Error('Incorrect context variable on CDK command! Pass "config" parameter for example like "-c config=dev"');
 	}
 

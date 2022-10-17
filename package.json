@@ -15,10 +15,10 @@
 		"cdk-deploy-dev": "cdk context --clear && cdk deploy $npm_config_stack -c config=dev --profile default",
 		"cdk-destroy-dev": "cdk destroy $npm_config_stack -c config=dev --profile default",
 		"prod": "",
-		"cdk-diff-prod": "cdk context --clear && cdk diff $npm_config_stack -c config=prod --profile piksel-del3-prod",
-		"cdk-diff-prod-all": "cdk context --clear && cdk diff -c config=prod --profile piksel-del3-prod",
-		"cdk-deploy-prod": "cdk context --clear && cdk deploy $npm_config_stack -c config=prod --profile piksel-del3-prod",
-		"cdk-destroy-prod": "cdk destroy $npm_config_stack -c config=prod --profile piksel-del3-prod"
+		"cdk-diff-prod": "cdk context --clear && cdk diff $npm_config_stack -c config=prod --profile default",
+		"cdk-diff-prod-all": "cdk context --clear && cdk diff -c config=prod --profile default",
+		"cdk-deploy-prod": "cdk context --clear && cdk deploy $npm_config_stack -c config=prod --profile default",
+		"cdk-destroy-prod": "cdk destroy $npm_config_stack -c config=prod --profile default"
 	},
 	"devDependencies": {
 		"@types/jest": "^27.5.2",

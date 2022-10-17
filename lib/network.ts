@@ -41,6 +41,7 @@ export class NetworkStack extends Stack {
 		});
 
 		// Subnets
+		// PrivateSubnet
 		buildConfig.stacks.network.privateSubnets.forEach((subnet, index) => {
 			const privateSubnetName = `${prefix}-private-${subnet.zone}`;
 			this.privateSubnets.push(
@@ -58,9 +59,10 @@ export class NetworkStack extends Stack {
 				stringValue: this.privateSubnets[index].subnetId,
 			});
 		});
-
+		//PublicSubnet
 		buildConfig.stacks.network.publicSubnets.forEach((subnet, index) => {
 			const publicSubnetName = `${prefix}-public-${subnet.zone}`;
+
 			this.publicSubnets.push(
 				new PublicSubnet(this, publicSubnetName, {
 					vpcId: this.vpc.vpcId,
@@ -69,6 +71,7 @@ export class NetworkStack extends Stack {
 					mapPublicIpOnLaunch: true,
 				})
 			);
+
 			Tags.of(this.publicSubnets[index]).add("Name", publicSubnetName);
 
 			new StringParameter(this, `${publicSubnetName}-output`, {
@@ -89,7 +92,7 @@ export class NetworkStack extends Stack {
 		});
 		const internetGatewayAttachment = new CfnVPCGatewayAttachment(this, `${internetGatewayName}-attachment`, {
 			vpcId: this.vpc.vpcId,
-			internetGatewayId: internetGateway.ref,
+			internetGatewayId: internetGateway.ref, 
 		});
 
 		// NATs
@@ -163,6 +166,7 @@ export class NetworkStack extends Stack {
 					destinationCidrBlock: "0.0.0.0/0",
 				})
 			);
+			
 			Tags.of(publicRoutes[index]).add("Name", routeName);
 		});
 
